@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letter of Apologies</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #FFFFFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #greeting {
+            font-family: 'Pacifico', cursive;
+            font-size: 3em;
+            text-align: center;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #333;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.3s;
+            opacity: 0;
+        }
+
+        #greeting span {
+            display: inline-block;
+            overflow: hidden;
+            position: relative;
+            max-width: 0;
+            transition: max-width 1s;
+        }
+
+        #greeting span::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #333;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 1s;
+        }
+
+        #letter {
+            display: none;
+            width: 90%;
+            max-width: 800px;
+            background-color: #000;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            transform: scale(0.95);
+            transition: transform 0.3s;
+            margin: 20px;
+            height: 70vh;
+            overflow-y: auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+        }
+
+        p {
+            font-size: 18px;
+            color: #ddd;
+            line-height: 1.5;
+        }
+
+        footer {
+            text-align: left;
+            margin-top: 30px;
+            color: #ddd;
+        }
+
+        #inputDiv {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 70%;
+            max-width: 600px;
+            background-image: linear-gradient(45deg, #e0e0e0, #667eea);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            transition: opacity 0.3s;
+            opacity: 1;
+        }
+
+        #inputDiv label {
+            margin-bottom: 10px;
+            color: #555;
+            font-size: 18px;
+            font-family: 'Calligraffitti', cursive;
+        }
+
+        #inputDiv input {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            width: 100%;
+            max-width: 250px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+            font-size: 16px;
+        }
+
+        #inputDiv button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            background-image: linear-gradient(45deg, #e0e0e0, #667eea);
+            color: #ffffff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #truth {
+            display: none;
+        }
+
+        #scrollNotice {
+            text-align: center;
+            color: #ddd;
+        }
+
+        #revealTruthButton {
+            margin-top: 30px;
+            text-align: center;
+            display: block;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #revealTruthButton {
+            padding: 10px 20px;
+            border: none;
+            background: linear-gradient(45deg, #2e86de, #718093);
+            color: #ffffff;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        #revealTruthButton:hover {
+            background: linear-gradient(45deg, #718093, #2e86de);
+        }
+
+        .input-page {
+            background-color: #000;
+        }
+
+        .apology-page {
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow: auto;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body class="input-page">
+
+    <div id="inputDiv">
+        <label for="name">Your name:</label>
+        <input type="text" id="name" required>
+        <button onclick="transitionToGreeting()">Submit</button>
+    </div>
+
+    <div id="greeting">
+        Hi, <span></span>!
+    </div>
+
+    <div id="letter">
+        <h1>My Apologies</h1>
+        <p>
+            Dear <span></span>,
+            I apologize sincerely for the way I've treated you, and I deeply regret not sending this message sooner. I understand that my previous actions have hurt you, and I acknowledge the mistakes I made that day and the impact they had on you. While I expressed some of these sentiments to you that night, I realize that it wasn't enough.
+            <br> <br>
+            Even though I gifted you, showed kindness, and maintained my love for you, I recognize that it may not have been sufficient to mend the situation. My intentions behind these actions were never to expect immediate improvements from your side, as I understand that healing and change take time. I have revised some of my words based on our conversation from that night.
+            <br> <br>
+            I anticipated your feelings of anger, confusion, or statements like, "Why don't I feel any mistakes at all?" "Why am I not changing?" "Childish lah," "unprofessional," "too much," "why am I silent?" and so forth. I was prepared for the emotions and words you expressed  night.
+            <br> <br>
+            In this letter of apology and honesty, I want to express my gratitude for who you are and for your willingness to consider forgiving me, even if it takes time, or perhaps you may not forgive me at all. I urge you to read this letter thoughtfully and with maturity. Please try to put yourself in the shoes of others and see things from their perspective.
+            <br> <br>
+            As I mentioned before, if you choose to hate me,then hate me. I will respect your decision. I am committed to growing and becoming a better, wiser person, all the while maintaining my love for you.
+            <br> <br>
+            Once again, I wholeheartedly apologize for my actions until the moment you read this letter. My hope is that it offers you a new perspective and touches your heart.
+            <br><br>
+            Sincerely,
+        </p>
+        <footer>
+            Hizkia Ndun
+        </footer>
+        <button id="revealTruthButton" onclick="revealTruth()">Reveal the Truth</button>
+        <div id="truth">
+            <br><br>
+            <hr>    
+            <br><br>
+            <br><br>
+            <br><br>
+            <h1>The Truth</h1>
+                <p>Welcome,
+                    <br><br>
+                    First things first, there are many things I really want to clarify. After a lot of thinking, introspection, seeking advice from my closest friends, and praying, I have decided to remove and sort out a lot of things that I believe are not necessary to communicate through notes. I believe it's better to speak face-to-face. 
+                    <br><br>
+                    Why? 
+                    <br><br>
+                    Because I don't want any miscommunication that can ruin your mood or create unnecessary drama, especially since this note is being sent near your SPECIAL DAY. 
+                    <br><br>
+                    That's why it took a lot of time.
+                    Also, because it's one-sided, as you read this from the other side, I cannot control how you feel or how you will react. That's why, to prevent miscommunication, it's better to discuss the important and crucial matters face-to-face.
+                    <br><br>
+                    This is the wisest thing I can do right now, and I'm sorry if it doesn't meet your expectations as to what I promised – to deliver the truth to you through notes.
+                    What I want to discuss here or reveal is why I behaved a certain way, which made you think:
+                    <br><br>
+                    1. I'm childish,
+                    <br><br>
+                    2. unprofessional,
+                    <br><br>
+                    3. not feeling guilty (thinking that I'm right up until now, which made me act in a way that you hated and were mad about, and you told me to introspect and change).
+                    <br><br>
+                    4. I was supposed to talk and say sorry immediately, but I was silent.
+                    <br><br>
+                    5. other things that you were really angry about regarding my actions.
+                    <br><br>
+                    All of this, there's a reason why I want you to clearly and deeply understand, and I choose to discuss and deliver it face-to-face in a mature way.
+                    <br><br>
+                    <i>hizkia</i> & <i>berli.</i>
+                    <br><br>
+                    I'm doing this not to blame each other or create more drama. Well, I'm still learning, and I believe that this is part of growing up. We argue, we introspect, we give advice to each other, we forgive, we learn, we build, and we grow, all together.
+                    <br><br>
+                    I'm not doing this to prolong the issue or make it never-ending (kayak lanjut part 2), but I want to create a moment where both of us can introspect and grow together in the most respectful way.
+                    <br><br>
+                    <br><br>
+                    <br><br>
+                    <br><br>
+                    <i>"I love you just the way you are and always will".</i>
+                    <br><br>
+                    <br><br>
+                    <br><br>
+                    <br><br>
+                    I love being a part of your journey of growing up and seeing you become the best version of yourself.
+                    <br><br>
+                    That's it from me. If you have some free time, make sure it's a long one (just both of us), where we can discuss this more, and maybe you also want to share some stories. Feel free to tell.
+                    <br><br>
+                    <br><br>
+                    See you....
+                </p>
+                <br><br>
+                <br><br>
+                <br><br>
+                <br><br>
+                <h1>The End</h1>
+        </div>
+        
+        <!-- Scroll down notice -->
+        <p id="scrollNotice">Scroll down to see the truth.</p>
+    </div>
+
+    <script>
+        function transitionToGreeting() {
+            const name = document.getElementById('name').value.trim();
+            if (name) {
+                document.getElementById('inputDiv').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('inputDiv').style.display = 'none';
+                    document.getElementById('greeting').style.display = 'flex';
+                    setTimeout(() => {
+                        document.getElementById('greeting').style.opacity = '1';
+                        const greetingSpan = document.querySelector('#greeting span');
+                        greetingSpan.textContent = name;
+                        greetingSpan.style.maxWidth = name.length + "ch";
+                        greetingSpan.after.style.transform = "scaleX(1)";
+
+                        document.body.className = "apology-page";
+                    }, 300);
+                }, 300);
+            } else {
+                alert("Please enter your name!");
+            }
+        }
+
+        function transitionToLetter() {
+            document.getElementById('greeting').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('greeting').style.display = 'none';
+                const letterElem = document.getElementById('letter');
+                letterElem.style.display = 'block';
+                const nameSpan = document.querySelector('#letter span');
+                nameSpan.textContent = document.getElementById('name').value.trim();
+                setTimeout(() => {
+                    letterElem.style.transform = 'scale(1)';
+                }, 50);
+            }, 300);
+        }
+
+        function revealTruth() {
+            if (navigator.vibrate) {
+                navigator.vibrate(100);
+            }
+
+            const truthParagraph = document.getElementById('truth');
+            truthParagraph.style.display = 'block';
+
+            // Hide the scroll notice when revealing the truth
+            const scrollNotice = document.getElementById('scrollNotice');
+            scrollNotice.style.display = 'none';
+        }
+
+        document.getElementById('greeting').addEventListener('click', transitionToLetter);
+    </script>
+</body>
+
+</html>
